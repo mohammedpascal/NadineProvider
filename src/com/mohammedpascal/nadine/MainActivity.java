@@ -1,4 +1,4 @@
-package com.mohammedpascal.androidbean;
+package com.mohammedpascal.nadine;
 
 import java.util.List;
 

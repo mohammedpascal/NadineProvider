@@ -1,4 +1,4 @@
-package com.mohammedpascal.androidbean;
+package com.mohammedpascal.nadine;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

@@ -1,4 +1,4 @@
-package com.mohammedpascal.androidbean;
+package com.mohammedpascal.nadine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,7 +71,7 @@ public abstract class BeanProvider extends ContentProvider {
 
 	private String table;
 	
-	abstract Class<?> getEntity();
+	public abstract Class<?> getEntity();
 	
 	public void init() {
 		Class<?> clazz = getEntity();

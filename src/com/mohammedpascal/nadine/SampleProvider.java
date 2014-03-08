@@ -1,4 +1,4 @@
-package com.mohammedpascal.androidbean;
+package com.mohammedpascal.nadine;
 
 
 /**
@@ -10,7 +10,7 @@ package com.mohammedpascal.androidbean;
 public class SampleProvider extends BeanProvider {
 	
 	@Override
-	Class<?> getEntity() {
+	public Class<?> getEntity() {
 		return User.class;
 	}	
 }
