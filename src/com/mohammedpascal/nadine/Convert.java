@@ -25,19 +25,9 @@ public class Convert {
 		return json;
 	}
 	
-	public static <T> T fromJson(Class<T> clazz, JSONObject obj) throws IllegalAccessException, IllegalArgumentException, InstantiationException{
-		return fromJson(clazz.newInstance(), obj);
+	public static <T> T fromJson(Class<T> clazz, JSONObject obj) throws IllegalAccessException, IllegalArgumentException, InstantiationException, JSONException{
+		return Entity.fromJson(clazz.newInstance(), obj);
 		
-	}
-	
-	public static <T> T fromJson(T o, JSONObject obj) throws IllegalAccessException, IllegalArgumentException{
-		Field[] fields = o.getClass().getDeclaredFields();
-		for (Field field : fields) {
-			field.setAccessible(true);
-			field.set(o, obj.opt(field.getName()));
-		}
-		
-		return o;
 	}
 	
 	public static ContentValues toContentValues(Object obj) throws IllegalAccessException, IllegalArgumentException {
@@ -119,7 +109,7 @@ public class Convert {
 	}
 	
 	public static <T> T toObject(Class<T> clazz, Cursor cursor) throws IllegalAccessException, IllegalArgumentException, InstantiationException, InvocationTargetException, NoSuchMethodException{
-		return fromCursor(clazz.newInstance(), cursor);
+		return Entity.fromCursor(clazz.newInstance(), cursor);
 	}
 	
 	public static <T> List<T> toObjects(Class<T> clazz, Cursor cursor ) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
@@ -129,18 +119,6 @@ public class Convert {
 		}
 		
 		return list;
-	}
-	
-	public static <T> T fromCursor(T o, Cursor cursor) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException{
-		Field[] fields = o.getClass().getDeclaredFields();
-		for (Field field : fields) {
-			field.setAccessible(true);
-			field.set(o, Bean.get(cursor, field.getName()));
-		}
-		
-		o.getClass().getMethod("set_id", String.class).invoke(o, Bean.get(cursor, "_id"));
-		
-		return o;
 	}
 
 }

@@ -91,14 +91,14 @@ public final class Bean {
 
 	public static void save(Entity e) throws IllegalAccessException,
 			IllegalArgumentException, NoSuchFieldException {
-		String _id = e.get_id();
-		if (_id == null) {
+		long _id = e.get_id();
+		if (_id == 0) {
 			Bean.insert(BeanProvider.uri(e.getClass()),
 					Convert.toContentValues(e));
 		} else {
 			Bean.update(BeanProvider.uri(e.getClass()),
 					Convert.toContentValues(e), " _id = ? ",
-					new String[] { _id });
+					new String[] { _id+"" });
 		}
 	}
 
@@ -115,13 +115,13 @@ public final class Bean {
 		return delete(e.getClass(), e.get_id());
 	}
 
-	public static int delete(Class<?> clazz, String id) {
-		return delete(clazz, "_id", id);
+	public static int delete(Class<?> clazz, long id) {
+		return delete(clazz, "_id", id+"");
 	}
 
-	public static void delete(Class<?> clazz, Collection<?> ids) {
-		for (Object id : ids) {
-			delete(clazz, id.toString());
+	public static void delete(Class<?> clazz, Collection<Long> ids) {
+		for (Long id : ids) {
+			delete(clazz, id);
 		}
 	}
 

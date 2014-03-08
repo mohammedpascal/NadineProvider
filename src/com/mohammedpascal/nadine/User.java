@@ -4,6 +4,7 @@ public class User extends Entity{
 	
 	private String name;
 	private String phone;
+	private int age = 0;
 
 	public String getName() {
 		return name;
@@ -19,6 +20,14 @@ public class User extends Entity{
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 }
