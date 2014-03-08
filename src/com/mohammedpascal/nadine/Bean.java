@@ -185,20 +185,20 @@ public final class Bean {
 
 	// ----------------------
 
-	private static Uri insert(Uri url, ContentValues values) {
+	public static Uri insert(Uri url, ContentValues values) {
 		return bean.getContentResolver().insert(url, values);
 	}
 
-	private static Cursor query(Uri uri, String[] select, String where,
+	public static Cursor query(Uri uri, String[] select, String where,
 			String[] args, String order) {
 		return bean.getContentResolver().query(uri, select, where, args, order);
 	}
 
-	private static int delete(Uri uri, String where, String[] args) {
+	public static int delete(Uri uri, String where, String[] args) {
 		return bean.getContentResolver().delete(uri, where, args);
 	}
 
-	private static int update(Uri uri, ContentValues values, String where,
+	public static int update(Uri uri, ContentValues values, String where,
 			String[] args) {
 		return bean.getContentResolver().update(uri, values, where, args);
 	}

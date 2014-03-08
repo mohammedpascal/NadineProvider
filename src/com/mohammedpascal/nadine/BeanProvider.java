@@ -78,7 +78,8 @@ public abstract class BeanProvider extends ContentProvider {
 		String[] columns = Reflect.fields(clazz);
 		
 		table = getClass().getSimpleName();
-		authority = getContext().getPackageName() + "."+ table;
+		authority = getClass().getName(); //getContext().getPackageName() + "."+ table;
+		System.out.println(authority);
 		contentUri = Uri.parse("content://" + authority + "/" + table);
 		
 		uris.put(clazz.getName(), contentUri);

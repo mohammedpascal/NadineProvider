@@ -2,9 +2,9 @@ package com.mohammedpascal.nadine;
 
 public class User extends Entity{
 	
-	private String name;
-	private String phone;
-	private int age = 0;
+	public String name;
+	public String phone;
+	public int age = 0;
 
 	public String getName() {
 		return name;

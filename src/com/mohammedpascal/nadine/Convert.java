@@ -35,7 +35,7 @@ public class Convert {
 		Field[] fields = Reflect.getFields(obj);
 		for (Field field : fields) {
 			field.setAccessible(true);
-			values.put(field.getName(), field.get(obj).toString());
+			values.put(field.getName(), field.get(obj)+"");
 		}
 
 		return values;
