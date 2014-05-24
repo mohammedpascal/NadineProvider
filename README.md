@@ -15,6 +15,8 @@ public class SampleProvider extends NadineProvider {
 }
 ```
 
+This will create a ContentProvider with _id, username, password. The _id is created automatically!
+
 # How to use it?
 
 ```Java
