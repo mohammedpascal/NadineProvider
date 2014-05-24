@@ -1,4 +1,4 @@
-package com.mohammedpascal.nadine;
+package com.mohammedpascal.provider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +23,10 @@ import android.util.Log;
  * @author Mohammed Mustafa
  * 
  */
-public abstract class BeanProvider extends ContentProvider {
+public abstract class NadineProvider extends ContentProvider {
 
 	private static final Map<String, Uri> uris = new HashMap<String, Uri>();
-	
+
 	/**
 	 * Provider authority
 	 */
@@ -71,18 +71,17 @@ public abstract class BeanProvider extends ContentProvider {
 
 	private String table;
 	
-	public abstract Class<?> getEntity();
+	public abstract String[] getColumns();
 	
 	public void init() {
-		Class<?> clazz = getEntity();
-		String[] columns = Reflect.fields(clazz);
+		String[] columns = getColumns();
 		
 		table = getClass().getSimpleName();
 		authority = getClass().getName(); //getContext().getPackageName() + "."+ table;
 		System.out.println(authority);
 		contentUri = Uri.parse("content://" + authority + "/" + table);
 		
-		uris.put(clazz.getName(), contentUri);
+		uris.put(getClass().getName(), contentUri);
 		
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		uriMatcher.addURI(authority, table, ROWS);
@@ -96,10 +95,6 @@ public abstract class BeanProvider extends ContentProvider {
 		}
 
 		databaseCreate += ");";
-	}
-	
-	public Uri uri(Object o){
-		return uri(o.getClass());
 	}
 
 	public static Uri uri(Class<?> clazz) {
@@ -196,7 +191,7 @@ public abstract class BeanProvider extends ContentProvider {
 	public boolean onCreate() {
 		init();
 		Context context = getContext();
-		Bean.getInstance().init(context);
+		DB.getInstance().init(context);
 		DatabaseHelper dbHelper = new DatabaseHelper(context);
 
 		db = dbHelper.getWritableDatabase();
@@ -252,5 +247,6 @@ public abstract class BeanProvider extends ContentProvider {
 
 		return count;
 	}
+	
 
 }
