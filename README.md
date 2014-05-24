@@ -8,6 +8,8 @@ A very simple way to create and use content provider in Android
 Extend NadineProvider and implements it's single method getColumns:
 
 ```Java
+package com.mohammedpascal.provider;
+
 public class SampleProvider extends NadineProvider {
 	public String[] getColumns(){
 		return new String[]{ "username", "password" };
@@ -17,6 +19,15 @@ public class SampleProvider extends NadineProvider {
 
 This will create a ContentProvider with _id, username, password. The _id is created automatically!
 
+Add provider to AndroidManifest.xml
+
+```XML
+<provider
+	android:name="com.mohammedpascal.provider.SampleProvider"
+        android:authorities="com.mohammedpascal.provider.SampleProvider"
+        android:exported="false" />
+```
+Notice both name and authority is same as the  class name
 # How to use it?
 
 ```Java
