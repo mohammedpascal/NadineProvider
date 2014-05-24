@@ -27,7 +27,7 @@ Add provider to AndroidManifest.xml
         android:authorities="com.mohammedpascal.provider.SampleProvider"
         android:exported="false" />
 ```
-Notice both name and authority is same as the  class name
+Notice both name and authority are same as the  class name
 # How to use it?
 
 ```Java
