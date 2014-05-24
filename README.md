@@ -1,4 +1,4 @@
-NADINE
+NadineProvider
 ======
 
 A very simple way to create and use content provider in Android
