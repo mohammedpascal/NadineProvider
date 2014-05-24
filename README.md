@@ -1,7 +1,7 @@
 NADINE
 ======
 
-A very easy content provider for Android
+A very simple way to create and use content provider in Android
 
 # How it works?
 
